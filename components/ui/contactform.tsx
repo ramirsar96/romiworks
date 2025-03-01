@@ -3,8 +3,7 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { useState, useRef } from "react";
 
-// Ensure environment variable is accessible
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || "xbldngvk"; // Fallback to your ID
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "";
 
 export default function ContactForm() {
   const [state, handleSubmit] = useForm(FORMSPREE_ID);
@@ -14,17 +13,18 @@ export default function ContactForm() {
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form behavior
 
-    await handleSubmit(event);
+    await handleSubmit(event); // Handle submission, state updates automatically
+
     if (state.succeeded) {
-    setShowSuccessMessage(true);
+      setShowSuccessMessage(true);
 
-    // Clear form inputs
-    if (formRef.current) {
+      // Clear form inputs
+      if (formRef.current) {
         formRef.current.reset();
-    }
+      }
 
-    // Hide success message after 5 seconds
-    setTimeout(() => setShowSuccessMessage(false), 5000);
+      // Hide success message after 5 seconds
+      setTimeout(() => setShowSuccessMessage(false), 5000);
     }
   };
 
@@ -92,7 +92,7 @@ export default function ContactForm() {
       {/* Success Message */}
       {showSuccessMessage && (
         <p className="text-green-400 mt-2 text-center font-semibold bg-green-900/20 p-2 rounded-md">
-          ✅ Thanks for reaching out! I'll get back to you soon. 🚀
+          Thanks for reaching out! I'll get back to you soon. 
         </p>
       )}
     </form>

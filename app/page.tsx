@@ -3,12 +3,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Github, Linkedin, Mail, ExternalLink, Cpu, Sparkles, Calendar } from "lucide-react"
 import React from "react";
-import { useForm, ValidationError } from "@formspree/react";
 import ContactForm from "@/components/ui/contactform";
 
 
 export default function Home() {
-  // Sample projects - replace with your actual projects
   const projects = [
     {
       id: 1,
@@ -297,7 +295,7 @@ export default function Home() {
 
                       <div className="space-y-4 p-6 rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm">
                         <h2 className="text-2xl font-bold tracking-tighter">Send a Message</h2>
-                        <ContactForm /> {/* Embedding the ContactForm component */}
+                        <ContactForm />
                       </div>
 
                     </div>
